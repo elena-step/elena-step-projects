@@ -62,7 +62,7 @@ public class ThreeSortings {
                 System.out.println();
             }
 
-            if (str.equals(sort[1])) {
+            else if (str.equals(sort[1])) {
                 for (int i = 0; i < arr.length - 1; i++) {
                     System.out.print((i + 1) + "-й проход: ");
                     for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -82,7 +82,7 @@ public class ThreeSortings {
                 }
                 System.out.println();
             }
-            if (str.equals(sort[2])) {
+            else if (str.equals(sort[2])) {
                 for (int i = 1; i < arr.length; i++) {
                     int tmp = arr[i];
                     int j;
@@ -98,6 +98,9 @@ public class ThreeSortings {
                 }
                 System.out.println();
             }
+
+            else
+                System.out.println("ERROR");
         }
     }
 }
