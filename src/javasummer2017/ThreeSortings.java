@@ -6,23 +6,21 @@ import java.util.Scanner;
 public class ThreeSortings {
     public static void main(String[] args) {
         int n = 4;
-        int[] arrFirst = new int[n];
-        int[] arr = new int[arrFirst.length];
+        int[] arrUser = new int[n];
+        int[] arr = new int[arrUser.length];
         String[] sort = {"Сортировка выбором: ", "Пузырьковая сортировка: ", "Сортировка вставками: "};
         Scanner scan = new Scanner(System.in);
         String str;
-        int count = 0;
 
         System.out.println("Please, enter " + n + " integers:");
-        for (int i = 0; i < arrFirst.length; i++) {
+        for (int i = 0; i < arrUser.length; i++) {
             if (!scan.hasNextInt()) {
                 System.out.println("You need to enter integers only!");
                 System.out.println("Go on to enter!");
                 scan.next();
                 i--;
             } else {
-                arrFirst[count] = scan.nextInt();
-                count++;
+                arrUser[i] = scan.nextInt();
             }
         }
         System.out.println();
@@ -33,9 +31,9 @@ public class ThreeSortings {
             System.out.println();
             System.out.println();
             System.out.print("Исходный массив: ");
-            for (int i = 0; i < arrFirst.length; i++) {
-                System.out.print(arrFirst[i] + " ");
-                arr[i] = arrFirst[i];
+            for (int i = 0; i < arrUser.length; i++) {
+                System.out.print(arrUser[i] + " ");
+                arr[i] = arrUser[i];
             }
             System.out.println();
 
