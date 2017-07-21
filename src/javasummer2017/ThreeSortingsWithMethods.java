@@ -22,15 +22,15 @@ public class ThreeSortingsWithMethods {
             printArrayWithCopying(arrUser, arr);
 
             if (str.equals(sort[0])) {
-                SelectSorting(arr);
+                selectSorting(arr);
             }
 
             else if (str.equals(sort[1])) {
-                BubbleSorting(arr);
+                bubbleSorting(arr);
             }
 
             else if (str.equals(sort[2])) {
-                InsertSorting(arr);
+                insertSorting(arr);
             }
 
             else {
@@ -69,7 +69,7 @@ public class ThreeSortingsWithMethods {
     }
 
 
-    private static void SelectSorting(int[] arr) {
+    private static void selectSorting(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int max = 0;
             for (int j = 1; j < arr.length - i; j++) {
@@ -113,7 +113,7 @@ public class ThreeSortingsWithMethods {
     }
 
 
-    private static void BubbleSorting(int[] arr) {
+    private static void bubbleSorting(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             printPassNumberPlusOne(i);
             for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -146,7 +146,7 @@ public class ThreeSortingsWithMethods {
     }
 
 
-    private static void InsertSorting(int[] arr) {
+    private static void insertSorting(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int tmp = arr[i];
             conditionShiftOfElement(arr, i, tmp);
