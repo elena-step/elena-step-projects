@@ -18,34 +18,38 @@ public class YesterdayTomorrow {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int[] date = new int[3];
-        int g, m, n;
-        g = m = n = 0;
+        int g = 0;
+        int m = 0;
+        int n = 0;
 
         System.out.println("Please, enter the date by numbers.");
         System.out.println("Year can be up to 3000 only :)");
 
         System.out.print("year: ");
         if (!scan.hasNextInt()) {
-            messageOnlyNumbers();
+            messageInputError();
+            System.exit(0);
         } else {
             g = scan.nextInt();
         }
 
         System.out.print("month: ");
         if (!scan.hasNextInt()) {
-            messageOnlyNumbers();
+            messageInputError();
+            System.exit(0);
         } else {
             m = scan.nextInt();
         }
 
         System.out.print("day: ");
         if (!scan.hasNextInt()) {
-            messageOnlyNumbers();
+            messageInputError();
+            System.exit(0);
         } else {
             n = scan.nextInt();
         }
 
-        if (g < 1 || g > MAX_YEAR || m < 1 || m > 12 || n < 1 || n > getMaxDayInMonth(m, g)) {
+        if (checkBoundaryConditions(g, m, n)) {
             System.err.println("Error! Invalid input! Try again!");
             System.exit(0);
         } else {
@@ -67,9 +71,13 @@ public class YesterdayTomorrow {
         dateToString(tomorrow);
     }
 
-    private static void messageOnlyNumbers() {
-        System.err.println("Error! You need to use numbers only! Try again!");
-        System.exit(0);
+    private static boolean checkBoundaryConditions(int g, int m, int n) {
+        return g < 1 || g > MAX_YEAR || m < 1 || m > 12 || n < 1 || n > getMaxDayInMonth(m, g);
+    }
+
+    private static void messageInputError() {
+        System.err.println("Input error! You need to use numbers only! Try again!");
+
     }
 
     private static int[] countYesterday(int[] date) {
