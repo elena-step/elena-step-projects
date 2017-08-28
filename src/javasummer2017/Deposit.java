@@ -53,12 +53,12 @@ public class Deposit {
         } else {
             data = scan.nextDouble();
         }
+        //scan.close();
         return data;
     }
 
     private static void printData(double data) {
-        System.out.printf("%.2f", data);
-        System.out.println();
+        System.out.printf("%.2f%n", data);
     }
 
 
@@ -97,16 +97,14 @@ public class Deposit {
 
         boolean passed = true;
         if (month_ForExceedingInterest != expectedMonth_ForExceedingInterest) {
-            System.out.printf("Test error: month (exceeding interest) = %d, but expected = %d .",
+            System.out.printf("Test error: month (exceeding interest) = %d, but expected = %d .%n",
                     month_ForExceedingInterest, expectedMonth_ForExceedingInterest);
-            System.out.println();
             passed = false;
         }
 
         if (month_ForExceedingDeposit != expectedMonth_ForExceedingDeposit) {
-            System.out.printf("Test error: month (exceeding deposit) = %d, but expected = %d .",
+            System.out.printf("Test error: month (exceeding deposit) = %d, but expected = %d .%n",
                     month_ForExceedingDeposit, expectedMonth_ForExceedingDeposit);
-            System.out.println();
             passed = false;
         }
 
