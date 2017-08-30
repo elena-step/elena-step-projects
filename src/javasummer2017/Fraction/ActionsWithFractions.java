@@ -11,10 +11,10 @@ public class ActionsWithFractions {
 
     public static void main(String[] args) {
         Fraction fraction1 = new Fraction();
-        fraction1.whole = 2;
+        fraction1.whole = 2L;
         fraction1.part = 782;
         Fraction fraction2 = new Fraction();
-        fraction2.whole = -3;
+        fraction2.whole = -3L;
         fraction2.part = 596;
 
         System.out.println("Addition of two fractions: ");
@@ -158,22 +158,22 @@ public class ActionsWithFractions {
 
     private static void test(){
         Fraction fraction1 = new Fraction();
-        fraction1.whole = 2;
+        fraction1.whole = 2L;
         fraction1.part = 782;
         Fraction fraction2 = new Fraction();
-        fraction2.whole = -3;
+        fraction2.whole = -3L;
         fraction2.part = 596;
 
         Fraction expectedResultAddition = new Fraction();
-        expectedResultAddition.whole = -0;          //этот минус "теряется"
+        expectedResultAddition.whole = -0L;          //этот минус "теряется"
         expectedResultAddition.part = 8140;
 
         Fraction expectedResultDeduction = new Fraction();
-        expectedResultDeduction.whole = 6;
+        expectedResultDeduction.whole = 6L;
         expectedResultDeduction.part = 3780;
 
         Fraction expectedResultMultiplication = new Fraction();
-        expectedResultMultiplication.whole = -10;
+        expectedResultMultiplication.whole = -10L;
         expectedResultMultiplication.part = 0040;    //два первых нуля "теряются"
 
         int expectedResultCompare = 1;
