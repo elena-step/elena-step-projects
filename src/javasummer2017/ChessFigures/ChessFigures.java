@@ -41,19 +41,29 @@ public class ChessFigures {
         System.out.println("White pawns move from bottom to top.");
         System.out.println("Black pawns move from top to bottom.");
 
-        int choice = 1;
+        System.out.print("Input your choice: ");
+        int choice = getChessFigure();
+        System.out.println();
 
         boolean check = checkForChessFigure(choice,
                 coordVerticalFig, coordHorizontalFig,
                 coordVerticalOpponent, coordHorizontalOpponent);
-        System.out.println(check);
+
+        printResultOfCheck(check, coordVerticalOpponent, coordHorizontalOpponent);
     }
 
 
     private static int getRandomCoordinate() {
-        return (int) (Math.random() * 9);
+        return (int) (Math.random() * 8 + 1);
     }
 
+
+    private static int getChessFigure() {         //доработать
+        Scanner scan = new Scanner(System.in);
+        int result = scan.nextInt();
+        return result;
+
+    }
 
     private static boolean checkForChessFigure(int choiceOfUser,
                                                int coordVerticalFig, int coordHorizontalFig,
@@ -71,12 +81,12 @@ public class ChessFigures {
             case 4:
                 return checkForQueen(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-           /* case 5:
+            case 5:
                 return checkForWhitePawn(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
             case 6:
                 return checkForBlackPown(coordVerticalFig, coordHorizontalFig,
-                        coordVerticalOpponent, coordHorizontalOpponent);*/
+                        coordVerticalOpponent, coordHorizontalOpponent);
             case 7:
                 return checkForKnight(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
@@ -118,22 +128,72 @@ public class ChessFigures {
     }
 
 
-   /* private static boolean checkForWhitePawn(int coordVerticalFig, int coordHorizontalFig,
+    private static boolean checkForWhitePawn(int coordVerticalFig, int coordHorizontalFig,
                                              int coordVerticalOpponent, int coordHorizontalOpponent) {
-        return
+        boolean move = false;
+        if (coordVerticalFig == coordVerticalOpponent &&
+                coordHorizontalOpponent - coordHorizontalFig == 1 ||
+                coordVerticalFig == coordVerticalOpponent &&
+                        coordHorizontalFig == 2 &&
+                        coordHorizontalOpponent - coordHorizontalFig == 2) {
+            System.out.println("The white pawn moves to another field.");
+            move = true;
+            return move;
+        }
+        boolean danger = false;
+        if (Math.abs(coordVerticalOpponent - coordVerticalFig) == 1 &&
+                coordHorizontalOpponent - coordHorizontalFig == 1) {
+            System.out.println("White pawn threatens the opponent's figure.");
+            danger = true;
+            return danger;
+        }
+
+        return false;
     }
 
     private static boolean checkForBlackPown(int coordVerticalFig, int coordHorizontalFig,
                                              int coordVerticalOpponent, int coordHorizontalOpponent) {
-        return
-    }*/
+        boolean move = false;
+        if (coordVerticalFig == coordVerticalOpponent &&
+                coordHorizontalOpponent - coordHorizontalFig == -1 ||
+                coordVerticalFig == coordVerticalOpponent &&
+                        coordHorizontalFig == 7 &&
+                        coordHorizontalOpponent - coordHorizontalFig == -2) {
+            System.out.println("The white pawn moves to another field.");
+            move = true;
+            return move;
+        }
+        boolean danger = false;
+        if (Math.abs(coordVerticalOpponent - coordVerticalFig) == 1 &&
+                coordHorizontalOpponent - coordHorizontalFig == -1) {
+            System.out.println("White pawn threatens the opponent's figure.");
+            danger = true;
+            return danger;
+        }
+
+        return false;
+    }
 
     private static boolean checkForKnight(int coordVerticalFig, int coordHorizontalFig,
                                           int coordVerticalOpponent, int coordHorizontalOpponent) {
-        return Math.abs(coordVerticalFig-coordVerticalOpponent)*
-                Math.abs(coordHorizontalFig - coordHorizontalOpponent)==2;
+        return Math.abs(coordVerticalFig - coordVerticalOpponent) *
+                Math.abs(coordHorizontalFig - coordHorizontalOpponent) == 2;
     }
 
+    private static void printResultOfCheck(boolean check,
+                                           int coordVerticalOpponent, int coordHorizontalOpponent) {
+        if (check) {
+            System.out.printf("This figure can hit or go " +
+                            "to the field with coordinates %d%2d.%n",
+                    coordVerticalOpponent, coordHorizontalOpponent);
+        } else {
+            System.out.printf("This figure can not hit or go " +
+                            "to the field with coordinates %d%2d.%n",
+                    coordVerticalOpponent, coordHorizontalOpponent);
+        }
+    }
+
+    // написать test()
 }
 
 
