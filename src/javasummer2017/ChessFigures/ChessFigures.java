@@ -50,6 +50,8 @@ public class ChessFigures {
                 coordVerticalOpponent, coordHorizontalOpponent);
 
         printResultOfCheck(check, coordVerticalOpponent, coordHorizontalOpponent);
+
+        //test();
     }
 
 
@@ -58,9 +60,10 @@ public class ChessFigures {
     }
 
 
-    private static int getChessFigure() {         //доработать
+    private static int getChessFigure() {
         Scanner scan = new Scanner(System.in);
         int result = scan.nextInt();
+        scan.close();
         return result;
 
     }
@@ -85,7 +88,7 @@ public class ChessFigures {
                 return checkForWhitePawn(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
             case 6:
-                return checkForBlackPown(coordVerticalFig, coordHorizontalFig,
+                return checkForBlackPawn(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
             case 7:
                 return checkForKnight(coordVerticalFig, coordHorizontalFig,
@@ -113,8 +116,10 @@ public class ChessFigures {
 
     private static boolean checkForKing(int coordVerticalFig, int coordHorizontalFig,
                                         int coordVerticalOpponent, int coordHorizontalOpponent) {
-        return Math.abs(coordVerticalFig - coordVerticalOpponent) == 1 ||
-                Math.abs(coordHorizontalFig - coordHorizontalOpponent) == 1;
+        return Math.abs(coordVerticalFig - coordVerticalOpponent) == 1 &&
+                Math.abs(coordHorizontalFig - coordHorizontalOpponent) != 2 ||
+                Math.abs(coordHorizontalFig - coordHorizontalOpponent) == 1 &&
+                        Math.abs(coordVerticalFig - coordVerticalOpponent) != 2;
 
     }
 
@@ -143,7 +148,7 @@ public class ChessFigures {
         boolean danger = false;
         if (Math.abs(coordVerticalOpponent - coordVerticalFig) == 1 &&
                 coordHorizontalOpponent - coordHorizontalFig == 1) {
-            System.out.println("White pawn threatens the opponent's figure.");
+            System.out.println("The white pawn threatens to the opponent's figure.");
             danger = true;
             return danger;
         }
@@ -151,7 +156,7 @@ public class ChessFigures {
         return false;
     }
 
-    private static boolean checkForBlackPown(int coordVerticalFig, int coordHorizontalFig,
+    private static boolean checkForBlackPawn(int coordVerticalFig, int coordHorizontalFig,
                                              int coordVerticalOpponent, int coordHorizontalOpponent) {
         boolean move = false;
         if (coordVerticalFig == coordVerticalOpponent &&
@@ -159,14 +164,14 @@ public class ChessFigures {
                 coordVerticalFig == coordVerticalOpponent &&
                         coordHorizontalFig == 7 &&
                         coordHorizontalOpponent - coordHorizontalFig == -2) {
-            System.out.println("The white pawn moves to another field.");
+            System.out.println("The black pawn moves to another field.");
             move = true;
             return move;
         }
         boolean danger = false;
         if (Math.abs(coordVerticalOpponent - coordVerticalFig) == 1 &&
                 coordHorizontalOpponent - coordHorizontalFig == -1) {
-            System.out.println("White pawn threatens the opponent's figure.");
+            System.out.println("The black pawn threatens to the opponent's figure.");
             danger = true;
             return danger;
         }
@@ -193,7 +198,312 @@ public class ChessFigures {
         }
     }
 
-    // написать test()
+
+    private static void test() {
+        boolean passed = true;
+
+        int coordV = 2;
+        int coordH = 7;
+        int coordVO = 2;
+        int coordHO = 2;
+
+        boolean expectedResultForRook = true;
+        boolean expectedResultForBishop = false;
+        boolean expectedResultForKing = false;
+        boolean expectedResultForQueen = true;
+        boolean expectedResultForWhitePawn = false;
+        boolean expectedResultForBlackPawn = false;
+        boolean expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 7;
+        coordVO = 3;
+        coordHO = 7;
+
+        expectedResultForRook = true;
+        expectedResultForBishop = false;
+        expectedResultForKing = true;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 7;
+        coordVO = 7;
+        coordHO = 2;
+
+        expectedResultForRook = false;
+        expectedResultForBishop = true;
+        expectedResultForKing = false;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 7;
+        coordVO = 1;
+        coordHO = 6;
+
+        expectedResultForRook = false;
+        expectedResultForBishop = true;
+        expectedResultForKing = true;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = true;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 7;
+        coordVO = 1;
+        coordHO = 7;
+
+        expectedResultForRook = true;
+        expectedResultForBishop = false;
+        expectedResultForKing = true;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 7;
+        coordVO = 2;
+        coordHO = 6;
+
+        expectedResultForRook = true;
+        expectedResultForBishop = false;
+        expectedResultForKing = true;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = true;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+        coordV = 2;
+        coordH = 7;
+        coordVO = 2;
+        coordHO = 5;
+
+        expectedResultForRook = true;
+        expectedResultForBishop = false;
+        expectedResultForKing = false;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = true;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 2;
+        coordVO = 3;
+        coordHO = 3;
+
+        expectedResultForRook = false;
+        expectedResultForBishop = true;
+        expectedResultForKing = true;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = true;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+        coordV = 2;
+        coordH = 2;
+        coordVO = 2;
+        coordHO = 3;
+
+        expectedResultForRook = true;
+        expectedResultForBishop = false;
+        expectedResultForKing = true;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = true;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 2;
+        coordVO = 2;
+        coordHO = 4;
+
+        expectedResultForRook = true;
+        expectedResultForBishop = false;
+        expectedResultForKing = false;
+        expectedResultForQueen = true;
+        expectedResultForWhitePawn = true;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = false;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+        coordV = 2;
+        coordH = 2;
+        coordVO = 3;
+        coordHO = 4;
+
+        expectedResultForRook = false;
+        expectedResultForBishop = false;
+        expectedResultForKing = false;
+        expectedResultForQueen = false;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = true;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+        coordV = 2;
+        coordH = 2;
+        coordVO = 4;
+        coordHO = 3;
+
+        expectedResultForRook = false;
+        expectedResultForBishop = false;
+        expectedResultForKing = false;
+        expectedResultForQueen = false;
+        expectedResultForWhitePawn = false;
+        expectedResultForBlackPawn = false;
+        expectedResultForKnight = true;
+
+        passed = isPassed(passed,
+                coordV, coordH, coordVO, coordHO,
+                expectedResultForRook, expectedResultForBishop,
+                expectedResultForKing, expectedResultForQueen,
+                expectedResultForWhitePawn, expectedResultForBlackPawn,
+                expectedResultForKnight);
+
+
+
+        if (passed) {
+            System.out.println("Test passed.");
+        }
+
+
+    }
+
+    private static boolean isPassed(boolean passed,
+                                    int coordV, int coordH, int coordVO, int coordHO,
+                                    boolean expectedResultForRook, boolean expectedResultForBishop,
+                                    boolean expectedResultForKing, boolean expectedResultForQueen,
+                                    boolean expectedResultForWhitePawn, boolean expectedResultForBlackPawn,
+                                    boolean expectedResultForKnight) {
+
+        boolean resultForRook = checkForRook(coordV, coordH, coordVO, coordHO);
+        boolean resultForBishop = checkForBishop(coordV, coordH, coordVO, coordHO);
+        boolean resultForKing = checkForKing(coordV, coordH, coordVO, coordHO);
+        boolean resultForQueen = checkForQueen(coordV, coordH, coordVO, coordHO);
+        boolean resultForWhitePawn = checkForWhitePawn(coordV, coordH, coordVO, coordHO);
+        boolean resultForBlackPawn = checkForBlackPawn(coordV, coordH, coordVO, coordHO);
+        boolean resultForKnight = checkForKnight(coordV, coordH, coordVO, coordHO);
+
+        if (resultForRook != expectedResultForRook) {
+            System.out.println("Test error for Rook.");
+            passed = false;
+        }
+        if (resultForBishop != expectedResultForBishop) {
+            System.out.println("Test error for Bishop.");
+            passed = false;
+        }
+        if (resultForKing != expectedResultForKing) {
+            System.out.println("Test error for King.");
+            passed = false;
+        }
+        if (resultForQueen != expectedResultForQueen) {
+            System.out.println("Test error for Queen.");
+            passed = false;
+        }
+        if (resultForWhitePawn != expectedResultForWhitePawn) {
+            System.out.println("Test error for White pawn.");
+            passed = false;
+        }
+        if (resultForBlackPawn != expectedResultForBlackPawn) {
+            System.out.println("Test error for Black pawn.");
+            passed = false;
+        }
+        if (resultForKnight != expectedResultForKnight) {
+            System.out.println("Test error for Knight.");
+            passed = false;
+        }
+        return passed;
+    }
 }
 
 
