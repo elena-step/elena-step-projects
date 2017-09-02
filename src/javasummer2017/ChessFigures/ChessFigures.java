@@ -38,8 +38,7 @@ import java.util.Scanner;
 ж) На поле (a, b) расположен конь. Записать условие, при котором он угрожа-
 ет полю (c, d).
 
-
- */
+*/
 
 public class ChessFigures {
 
@@ -80,7 +79,7 @@ public class ChessFigures {
         System.out.println("White pawns move from bottom to top.");
         System.out.println("Black pawns move from top to bottom.");
 
-        System.out.print("Input your choice: ");
+        System.out.println("Input your choice: ");
         int choice = getChessFigure();
         System.out.println();
 
@@ -101,11 +100,19 @@ public class ChessFigures {
 
     private static int getChessFigure() {
         Scanner scan = new Scanner(System.in);
-        int result = scan.nextInt();
+        int result;
+        while (true) {
+            result = scan.nextInt();
+            if (result < 1 || result > 7) {
+                System.out.println("Input error. You can input numbers from 1 to 7.");
+            } else {
+                break;
+            }
+        }
         scan.close();
         return result;
-
     }
+
 
     private static boolean checkForChessFigure(int choiceOfUser,
                                                int coordVerticalFig, int coordHorizontalFig,
