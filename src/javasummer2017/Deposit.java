@@ -44,6 +44,23 @@ public class Deposit {
         //test();
     }
 
+   /* private static double inputDataUser() {
+        Scanner scan = new Scanner(System.in);
+        double data;
+        while (true) {
+            data = scan.nextDouble();
+
+            if (!scan.hasNextDouble()) {
+                System.out.println("Input error! Try again.");
+            } else {
+                data = scan.nextDouble();
+                break;
+            }
+        }
+       // scan.close();
+        return data;
+    }*/
+
     private static double inputDataUser() {
         Scanner scan = new Scanner(System.in);
         double data = 0;
