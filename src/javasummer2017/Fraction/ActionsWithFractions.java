@@ -19,24 +19,25 @@ public class ActionsWithFractions {
 
         System.out.println("Addition of two fractions: ");
         Fraction resultAddition = fractionsAddUp(fraction1, fraction2);
-        printFraction(resultAddition);
+        printResultFraction(resultAddition);
         System.out.println();
 
         System.out.println("Deduction of two fractions: ");
         Fraction resultDeduction = fractionsDeduct(fraction1, fraction2);
-        printFraction(resultDeduction);
+        printResultFraction(resultDeduction);
         System.out.println();
 
         System.out.println("Multiplication of two fractions: ");
         Fraction resultMultiplication = fractionsMultiply(fraction1, fraction2);
-        printFraction(resultMultiplication);
+        printResultFraction(resultMultiplication);
         System.out.println();
 
         System.out.println("Comparison of two fractions: ");
         int resultCompare = fractionsCompare(fraction1, fraction2);
         printResultCompare(fraction1, fraction2, resultCompare);
 
-        //test();
+
+        test();
     }
 
     private static double convertPartToDouble(Fraction aFraction) {
@@ -59,7 +60,10 @@ public class ActionsWithFractions {
 
     private static Fraction convertDoubleNumberToFraction(double number) {
         Fraction result = new Fraction();
-        result.whole = (long) number;   // отрицательн число с 0 целой частью отражается как 0 без "минуса"
+        if (number < 0 && number > -1) {
+            result.negativeNumberFromZeroToOne = true;
+        }
+        result.whole = (long) number;
 
         if (number < 0) {
             number = -number;
@@ -74,7 +78,7 @@ public class ActionsWithFractions {
 
         int tempPart = 0;
         for (int i = digitsForPart.length - 1; i >= 0; i--) {
-            tempPart = tempPart * 10 + digitsForPart[i];        //ошибка если массив содержит нули в конце
+            tempPart = tempPart * 10 + digitsForPart[i];
         }
         result.part = (short) tempPart;
 
@@ -151,12 +155,36 @@ public class ActionsWithFractions {
         }
     }
 
-    private static void printFraction(Fraction aFraction)
-    {
+    private static void printFraction(Fraction aFraction) {
         System.out.print(aFraction.whole + "." + aFraction.part);
     }
 
-    private static void test(){
+
+    private static void printResultFraction(Fraction aFraction) {
+        if (aFraction.negativeNumberFromZeroToOne == false) {
+            if (aFraction.part >= 1000) {
+                System.out.println(aFraction.whole + "." + aFraction.part);
+            } else if (aFraction.part >= 100) {
+                System.out.println(aFraction.whole + ".0" + aFraction.part);
+            } else if (aFraction.part >= 10) {
+                System.out.println(aFraction.whole + ".00" + aFraction.part);
+            } else if (aFraction.part < 10) {
+                System.out.println(aFraction.whole + ".000" + aFraction.part);
+            }
+        } else {
+            if (aFraction.part >= 1000) {
+                System.out.println("-" + aFraction.whole + "." + aFraction.part);
+            } else if (aFraction.part >= 100) {
+                System.out.println("-" + aFraction.whole + ".0" + aFraction.part);
+            } else if (aFraction.part >= 10) {
+                System.out.println("-" + aFraction.whole + ".00" + aFraction.part);
+            } else if (aFraction.part < 10) {
+                System.out.println("-" + aFraction.whole + ".000" + aFraction.part);
+            }
+        }
+    }
+
+    private static void test() {
         Fraction fraction1 = new Fraction();
         fraction1.whole = 2L;
         fraction1.part = 782;
@@ -165,7 +193,7 @@ public class ActionsWithFractions {
         fraction2.part = 596;
 
         Fraction expectedResultAddition = new Fraction();
-        expectedResultAddition.whole = -0L;          //этот минус "теряется"
+        expectedResultAddition.whole = 0L;
         expectedResultAddition.part = 8140;
 
         Fraction expectedResultDeduction = new Fraction();
@@ -174,7 +202,7 @@ public class ActionsWithFractions {
 
         Fraction expectedResultMultiplication = new Fraction();
         expectedResultMultiplication.whole = -10L;
-        expectedResultMultiplication.part = 0040;    //два первых нуля "теряются"
+        expectedResultMultiplication.part = 40;
 
         int expectedResultCompare = 1;
 
@@ -183,51 +211,53 @@ public class ActionsWithFractions {
         Fraction resultMultiplication = fractionsMultiply(fraction1, fraction2);
         int resultCompare = fractionsCompare(fraction1, fraction2);
 
+        System.out.println();
+
         boolean passed = true;
-        if(resultAddition.whole != expectedResultAddition.whole) {
+        if (resultAddition.whole != expectedResultAddition.whole) {
             System.out.printf("Test error: sum (whole) = %d, but expected sum (whole) = %d.",
                     resultAddition, expectedResultAddition);
             passed = false;
         }
 
-        if(resultAddition.part != expectedResultAddition.part) {
+        if (resultAddition.part != expectedResultAddition.part) {
             System.out.printf("Test error: sum (part) = %d, but expected sum (part) = %d.",
                     resultAddition, expectedResultAddition);
             passed = false;
         }
 
-        if(resultDeduction.whole != expectedResultDeduction.whole) {
+        if (resultDeduction.whole != expectedResultDeduction.whole) {
             System.out.printf("Test error: deduction (whole) = %d, but expected deduction = %d.",
                     resultDeduction, expectedResultDeduction);
             passed = false;
         }
 
-        if(resultDeduction.part != expectedResultDeduction.part) {
+        if (resultDeduction.part != expectedResultDeduction.part) {
             System.out.printf("Test error: deduction (part) = %d, but expected deduction = %d.",
                     resultDeduction, expectedResultDeduction);
             passed = false;
         }
 
-        if(resultMultiplication.whole != expectedResultMultiplication.whole) {
+        if (resultMultiplication.whole != expectedResultMultiplication.whole) {
             System.out.printf("Test error: mult (whole) = %d, but expected mult (whole) = %d.",
                     resultMultiplication, expectedResultMultiplication);
             passed = false;
         }
 
-        if(resultMultiplication.part != expectedResultMultiplication.part) {
+        if (resultMultiplication.part != expectedResultMultiplication.part) {
             System.out.printf("Test error: mult (part) = %d, but expected mult (part) = %d.",
                     resultMultiplication, expectedResultMultiplication);
             passed = false;
         }
 
-        if(resultCompare != expectedResultCompare) {
-            System.out.printf("Test error: result compare = %d, but expected result compare) = %d.",
+        if (resultCompare != expectedResultCompare) {
+            System.out.printf("Test error: result compare = %d, but expected result compare = %d.",
                     resultCompare, expectedResultCompare);
             passed = false;
         }
 
         if (passed)
-            System.out.println("Teat passed!");
+            System.out.println("Test passed!");
     }
 }
 
