@@ -7,7 +7,7 @@ package javasummer2017.FractionWithEncapsulation;
 В функции main проверить эти методы.
 */
 
-public class AktionsWithFractionsC {
+public class ActionsWithFractionsC {
 
         public static void main(String[] args) {
             FractionC fraction1 = new FractionC(-2L, 372);
