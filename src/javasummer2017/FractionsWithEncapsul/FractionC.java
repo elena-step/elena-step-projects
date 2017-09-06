@@ -60,5 +60,7 @@ public class FractionC {
         this.negativeNumberFromZeroToOne = negativeNumberFromZeroToOne;
     }
 
-
+    void printFraction() {
+        System.out.print(whole + "." + part);
+    }
 }

@@ -137,25 +137,21 @@ public class ActionsWithFractionsC {
     private static void printResultCompare(FractionC fraction1, FractionC fraction2, int number) {
         switch (number) {
             case 1:
-                printFraction(fraction1);
+                fraction1.printFraction();
                 System.out.print(" > ");
-                printFraction(fraction2);
+                fraction2.printFraction();
                 break;
             case 0:
-                printFraction(fraction1);
+                fraction1.printFraction();
                 System.out.print(" == ");
-                printFraction(fraction2);
+                fraction2.printFraction();
                 break;
             case -1:
-                printFraction(fraction1);
+                fraction1.printFraction();
                 System.out.print(" < ");
-                printFraction(fraction2);
+                fraction2.printFraction();
                 break;
         }
-    }
-
-    private static void printFraction(FractionC aFraction) {
-        System.out.print(aFraction.getWhole() + "." + aFraction.getPart());
     }
 
 
