@@ -44,7 +44,7 @@ public class FractionC {
     }
 
     public void setPart(int part) {
-        if (part >= -32768 && part <= 32767) {
+        if (part >= 1 && part <= 32767) {
             this.part = (short) part;
         } else {
             part = DEFAULT_PART;
