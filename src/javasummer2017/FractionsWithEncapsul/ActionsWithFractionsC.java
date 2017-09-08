@@ -18,7 +18,7 @@ public class ActionsWithFractionsC {
         FractionC fraction1 = new FractionC(-2L, 456789);
         FractionC fraction2 = new FractionC(3L, 825);
 
-        System.out.println("The actions will be performed for two decimal fractions:");
+        System.out.println("The actions will make for two decimal fractions:");
         fraction1.printFraction();
         System.out.print("   ");
         fraction2.printFraction();
