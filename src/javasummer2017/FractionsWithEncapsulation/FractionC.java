@@ -10,7 +10,6 @@ public class FractionC {
     private short part;
     private int counterOfZero;
 
-
     FractionC() {
         this.negativeNumber = DEFAULT_NEGATIVE_NUMBER;
         this.whole = 0;
@@ -59,13 +58,13 @@ public class FractionC {
     }
 
     public void setPart(int part) {
-        if (part >= 1 && part <= 32767) {
+        if (part >= 1 && part < 10000) {
             this.part = (short) part;
-        } else if (part > 32767) {
+        } else if (part >= 10000) {
             int temp = part;
             do {
                 temp /= 10;
-            } while (temp > 32767);
+            } while (temp >=10000);
             this.part = (short) temp;
         } else if (part == 0) {
             this.part = DEFAULT_PART;

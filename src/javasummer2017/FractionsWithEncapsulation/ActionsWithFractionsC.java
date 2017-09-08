@@ -60,7 +60,7 @@ public class ActionsWithFractionsC {
         printResultCompare(fraction1, fraction2, resultCompare);
 
 
-       // test();
+        test();
 
     }
 
@@ -200,21 +200,11 @@ public class ActionsWithFractionsC {
 
     private static void test() {
         FractionC fraction1 = new FractionC(2L, 12345);
-        FractionC fraction2 = new FractionC(-3L, 0001);
+        FractionC fraction2 = new FractionC(-3L, 1, 3);
 
-        FractionC expectedResultAddition = new FractionC();
-        expectedResultAddition.setWhole(0);
-        expectedResultAddition.setPart(8767);
-        expectedResultAddition.setNegativeNumber(true);
-
-        FractionC expectedResultDeduction = new FractionC();
-        expectedResultDeduction.setWhole(5L);
-        expectedResultDeduction.setPart(1235);
-
-        FractionC expectedResultMultiplication = new FractionC();
-        expectedResultMultiplication.setWhole(6L);
-        expectedResultMultiplication.setPart(3704);
-        expectedResultMultiplication.setNegativeNumber(true);
+        FractionC expectedResultAddition = new FractionC(true, 0, 8767, 0);
+        FractionC expectedResultDeduction = new FractionC(5, 1235);
+        FractionC expectedResultMultiplication = new FractionC(-6L, 3704);
 
         int expectedResultCompare = 1;
 
@@ -226,15 +216,33 @@ public class ActionsWithFractionsC {
         System.out.println();
 
         boolean passed = true;
+
+        if (resultAddition.isNegativeNumber() != expectedResultAddition.isNegativeNumber()) {
+            System.out.println("Test error: sum (negativeNumber)");
+            passed = false;
+        }
+
         if (resultAddition.getWhole() != expectedResultAddition.getWhole()) {
             System.out.printf("Test error: sum (whole) = %d, but expected sum (whole) = %d.",
                     resultAddition, expectedResultAddition);
             passed = false;
         }
 
-        if ((int)(resultAddition.getPart()) != ((int)expectedResultAddition.getPart())) {
+        if (resultAddition.getPart() != expectedResultAddition.getPart()) {
             System.out.printf("Test error: sum (part) = %d, but expected sum (part) = %d.",
                     resultAddition, expectedResultAddition);
+            passed = false;
+        }
+
+        if (resultAddition.getCounterOfZero() != expectedResultAddition.getCounterOfZero()) {
+            System.out.printf("Test error: sum (counterOfZero) = %d, " +
+                            "but expected sum (counterOfZero) = %d.",
+                    resultAddition, expectedResultAddition);
+            passed = false;
+        }
+
+        if (resultDeduction.isNegativeNumber() != expectedResultDeduction.isNegativeNumber()) {
+            System.out.println("Test error: deduction (negativeNumber)");
             passed = false;
         }
 
@@ -249,7 +257,17 @@ public class ActionsWithFractionsC {
                     resultDeduction, expectedResultDeduction);
             passed = false;
         }
+        if (resultDeduction.getCounterOfZero() != expectedResultDeduction.getCounterOfZero()) {
+            System.out.printf("Test error: deduction (counterOfZero) = %d, " +
+                            "but expected dedaction (counterOfZero) = %d.",
+                    resultDeduction, expectedResultDeduction);
+            passed = false;
+        }
 
+        if (resultMultiplication.isNegativeNumber() != expectedResultMultiplication.isNegativeNumber()) {
+            System.out.println("Test error: mult (negativeNumber)");
+            passed = false;
+        }
         if (resultMultiplication.getWhole() != expectedResultMultiplication.getWhole()) {
             System.out.printf("Test error: mult (whole) = %d, but expected mult (whole) = %d.",
                     resultMultiplication, expectedResultMultiplication);
@@ -259,6 +277,12 @@ public class ActionsWithFractionsC {
         if (resultMultiplication.getPart() != expectedResultMultiplication.getPart()) {
             System.out.printf("Test error: mult (part) = %d, but expected mult (part) = %d.",
                     resultMultiplication, expectedResultMultiplication);
+            passed = false;
+        }
+        if (resultAddition.getCounterOfZero() != expectedResultAddition.getCounterOfZero()) {
+            System.out.printf("Test error: mult (counterOfZero) = %d, " +
+                            "but expected mult (counterOfZero) = %d.",
+                    resultAddition, expectedResultAddition);
             passed = false;
         }
 
