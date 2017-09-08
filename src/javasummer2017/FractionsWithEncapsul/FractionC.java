@@ -43,14 +43,24 @@ public class FractionC {
         return part;
     }
 
+
     public void setPart(int part) {
         if (part >= 1 && part <= 32767) {
             this.part = (short) part;
+        } else if (part > 32767) {
+            int temp = part;
+            do {
+                temp /= 10;
+            } while (temp > 32767);
+            this.part = (short) temp;
+        } else if (part == 0) {
+            this.part = DEFAULT_PART;
         } else {
-            part = DEFAULT_PART;
+            System.err.println("The value of part is not correct.");
+            System.out.println(("The value of part for this case will be zero." ));
+            this.part = DEFAULT_PART;
         }
     }
-
 
     public boolean isNegativeNumberFromZeroToOne() {
         return negativeNumberFromZeroToOne;

@@ -12,9 +12,18 @@ package javasummer2017.FractionsWithEncapsul;
 
 
 public class ActionsWithFractionsC {
+    private static final int NUMBER_DIGITS_FOR_SHORT = 4;
+
     public static void main(String[] args) {
-        FractionC fraction1 = new FractionC(-2L, 372);
+        FractionC fraction1 = new FractionC(-2L, 456789);
         FractionC fraction2 = new FractionC(3L, 825);
+
+        System.out.println("The actions will be performed for two decimal fractions:");
+        fraction1.printFraction();
+        System.out.print("   ");
+        fraction2.printFraction();
+        System.out.println();
+        System.out.println();
 
         System.out.println("Addition of two fractions: ");
         FractionC resultAddition = fractionsAddUp(fraction1, fraction2);
@@ -69,8 +78,8 @@ public class ActionsWithFractionsC {
         }
         long temp = (long) (number * 10000);
 
-        int[] digitsForPart = new int[4];
-        for (int i = 0; i < 4; i++) {
+        int[] digitsForPart = new int[NUMBER_DIGITS_FOR_SHORT];
+        for (int i = 0; i < NUMBER_DIGITS_FOR_SHORT; i++) {
             digitsForPart[i] = (int) (temp % 10);
             temp /= 10;
         }
