@@ -15,7 +15,7 @@ public class ActionsWithFractionsC {
     private static final int NUMBER_DIGITS_FOR_SHORT = 4;
 
     public static void main(String[] args) {
-        FractionC fraction1 = new FractionC(-2L, 456789);
+        FractionC fraction1 = new FractionC(-2L, 1234567);
         FractionC fraction2 = new FractionC(3L, 825);
 
         System.out.println("The actions will make for two decimal fractions:");
