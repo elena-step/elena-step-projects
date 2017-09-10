@@ -41,8 +41,17 @@ import java.util.Scanner;
 */
 
 public class ChessFigures {
+    private static final int ROOK = 1;
+    private static final int BISHOP = 2;
+    private static final int KING = 3;
+    private static final int QUEEN = 4;
+    private static final int WHITE_PAWN = 5;
+    private static final int BLACK_PAWN = 6;
+    private static final int KNIGHT = 7;
+    private static final int SIZE_OF_CHESS_BOARD = 8;
 
     public static void main(String[] args) {
+
         int coordVerticalFig;
         int coordHorizontalFig;
         int coordVerticalOpponent;
@@ -94,7 +103,7 @@ public class ChessFigures {
 
 
     private static int getRandomCoordinate() {
-        return (int) (Math.random() * 8 + 1);
+        return (int) (Math.random() * SIZE_OF_CHESS_BOARD + 1);
     }
 
 
@@ -103,8 +112,8 @@ public class ChessFigures {
         int result;
         while (true) {
             result = scan.nextInt();
-            if (result < 1 || result > 7) {
-                System.out.println("Input error. You can input numbers from 1 to 7.");
+            if (result < ROOK || result > KNIGHT) {
+                System.out.println("Input error. You can input numbers from 1 (Rook) to 7 (Knight).");
             } else {
                 break;
             }
@@ -118,25 +127,25 @@ public class ChessFigures {
                                                int coordVerticalFig, int coordHorizontalFig,
                                                int coordVerticalOpponent, int coordHorizontalOpponent) {
         switch (choiceOfUser) {
-            case 1:
+            case ROOK:
                 return checkForRook(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-            case 2:
+            case BISHOP:
                 return checkForBishop(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-            case 3:
+            case KING:
                 return checkForKing(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-            case 4:
+            case QUEEN:
                 return checkForQueen(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-            case 5:
+            case WHITE_PAWN:
                 return checkForWhitePawn(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-            case 6:
+            case BLACK_PAWN:
                 return checkForBlackPawn(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
-            case 7:
+            case KNIGHT:
                 return checkForKnight(coordVerticalFig, coordHorizontalFig,
                         coordVerticalOpponent, coordHorizontalOpponent);
 
