@@ -8,33 +8,31 @@ public class ForeignPassport extends Passport {
 
     private String foreignPassportSerial;
     private String foreignPassportNumber;
-    private Visa visa;
+    protected Visas visas;                    //1
 
-    public ForeignPassport() {
+    ForeignPassport() {
+        super ();
     }
 
-    public ForeignPassport(String firstName, String lastName) {
+    ForeignPassport(String firstName, String lastName) {
+        this(firstName, lastName, DEFAULT_FOREIN_PASSPORT_SERIAL, DEFAULT_FOREIGN_PASSPORT_NUMBER);
+    }
+
+    ForeignPassport(String firstName, String lastName,
+                    String foreignPassportSerial, String foreignPassportNumber) {
         super(firstName, lastName);
         setForeignPassportSerial(foreignPassportSerial);
         setForeignPassportNumber(foreignPassportNumber);
-        visa = new Visa();
+        visas = new Visas();
     }
 
-    public ForeignPassport(String firstName, String lastName,
-                           String foreignPassportSerial, String foreignPassportNumber) {
+    ForeignPassport(String firstName, String lastName,                            //1
+                    String foreignPassportSerial, String foreignPassportNumber,
+                    String type, String openingDate, String closingDate) {
         super(firstName, lastName);
         setForeignPassportSerial(foreignPassportSerial);
         setForeignPassportNumber(foreignPassportNumber);
-        visa = new Visa();
-    }
-
-    public ForeignPassport(String firstName, String lastName,
-                           String foreignPassportSerial, String foreignPassportNumber,
-                           String type, String openingDate, String closingDate) {
-        super(firstName, lastName);
-        setForeignPassportSerial(foreignPassportSerial);
-        setForeignPassportNumber(foreignPassportNumber);
-        visa = new Visa(type, openingDate, closingDate);
+        visas = new Visas(type, openingDate, closingDate);
     }
 
     public String getForeignPassportSerial() {
@@ -53,5 +51,5 @@ public class ForeignPassport extends Passport {
         this.foreignPassportNumber = foreignPassportNumber;
     }
 
-
+// добавить геттеры и сеттеры для массива виз
 }

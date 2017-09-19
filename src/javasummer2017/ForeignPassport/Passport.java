@@ -2,7 +2,9 @@ package javasummer2017.ForeignPassport;
 
 public class Passport {
 
-    private static final String DEFAULT_PASSPORT_SERIAL = "Unknown";
+    private static final String DEFAULT_FIRST_NAME = "Unknown";
+    private static final String DEFAULT_LAST_NAME = DEFAULT_FIRST_NAME;
+    private static final String DEFAULT_PASSPORT_SERIAL = "Unknown passport data";
     private static final String DEFAULT_PASSPORT_NUMBER = DEFAULT_PASSPORT_SERIAL;
 
     private String firstName;
@@ -11,24 +13,19 @@ public class Passport {
     private String passportNumber;
 
 
-    public Passport() {
-
+    Passport() {
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME);
     }
 
-    public Passport(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.passportSerial = DEFAULT_PASSPORT_SERIAL;
-        this.passportNumber = DEFAULT_PASSPORT_NUMBER;
-
+    Passport(String firstName, String lastName) {
+        this(firstName, lastName, DEFAULT_PASSPORT_SERIAL, DEFAULT_PASSPORT_NUMBER);
     }
 
-    public Passport(String firstName, String lastName, String passportSerial, String passportNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.passportSerial = passportSerial;
-        this.passportNumber = passportNumber;
-
+    Passport(String firstName, String lastName, String passportSerial, String passportNumber) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setPassportSerial(passportSerial);
+        setPassportNumber(passportNumber);
     }
 
 
@@ -37,7 +34,7 @@ public class Passport {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = firstName == null ? DEFAULT_FIRST_NAME : firstName;
     }
 
     public String getLastName() {
@@ -45,7 +42,7 @@ public class Passport {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = lastName == null ? DEFAULT_LAST_NAME : lastName;
     }
 
     public String getPassportSerial() {
@@ -53,7 +50,7 @@ public class Passport {
     }
 
     public void setPassportSerial(String passportSerial) {
-        this.passportSerial = passportSerial;
+        this.passportSerial = passportSerial == null ? DEFAULT_PASSPORT_SERIAL : passportSerial;
     }
 
     public String getPassportNumber() {
@@ -61,7 +58,7 @@ public class Passport {
     }
 
     public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
+        this.passportNumber = passportNumber == null ? DEFAULT_PASSPORT_SERIAL : passportNumber;
     }
 
 
