@@ -2,20 +2,20 @@ package javasummer2017.ForeignPassport;
 
 public class ForeignPassport extends Passport {
 
-    private static final String DEFAULT_FOREIN_PASSPORT_SERIAL = "Unknown";
-    private static final String DEFAULT_FOREIGN_PASSPORT_NUMBER = DEFAULT_FOREIN_PASSPORT_SERIAL;
+    private static final String DEFAULT_FOREIGN_PASSPORT_SERIAL = "Unknown";
+    private static final String DEFAULT_FOREIGN_PASSPORT_NUMBER = DEFAULT_FOREIGN_PASSPORT_SERIAL;
 
 
     private String foreignPassportSerial;
     private String foreignPassportNumber;
-    protected Visas visas;                    //1
+    protected Visas[] visas;
 
     ForeignPassport() {
-        super ();
+        super();
     }
 
     ForeignPassport(String firstName, String lastName) {
-        this(firstName, lastName, DEFAULT_FOREIN_PASSPORT_SERIAL, DEFAULT_FOREIGN_PASSPORT_NUMBER);
+        this(firstName, lastName, DEFAULT_FOREIGN_PASSPORT_SERIAL, DEFAULT_FOREIGN_PASSPORT_NUMBER);
     }
 
     ForeignPassport(String firstName, String lastName,
@@ -23,16 +23,7 @@ public class ForeignPassport extends Passport {
         super(firstName, lastName);
         setForeignPassportSerial(foreignPassportSerial);
         setForeignPassportNumber(foreignPassportNumber);
-        visas = new Visas();
-    }
-
-    ForeignPassport(String firstName, String lastName,                            //1
-                    String foreignPassportSerial, String foreignPassportNumber,
-                    String type, String openingDate, String closingDate) {
-        super(firstName, lastName);
-        setForeignPassportSerial(foreignPassportSerial);
-        setForeignPassportNumber(foreignPassportNumber);
-        visas = new Visas(type, openingDate, closingDate);
+        this.visas = new Visas[10];
     }
 
     public String getForeignPassportSerial() {
@@ -40,16 +31,16 @@ public class ForeignPassport extends Passport {
     }
 
     public void setForeignPassportSerial(String foreignPassportSerial) {
-        this.foreignPassportSerial = foreignPassportSerial;
+        this.foreignPassportSerial = foreignPassportSerial == null ? DEFAULT_FOREIGN_PASSPORT_SERIAL : foreignPassportSerial;
     }
 
-    public String getForeignPassportNumber() {
+    public String getForeignPassportNumber()
+    {
         return foreignPassportNumber;
     }
 
     public void setForeignPassportNumber(String foreignPassportNumber) {
-        this.foreignPassportNumber = foreignPassportNumber;
+        this.foreignPassportNumber = foreignPassportNumber == null ? DEFAULT_FOREIGN_PASSPORT_NUMBER : foreignPassportNumber;
     }
 
-// добавить геттеры и сеттеры для массива виз
 }

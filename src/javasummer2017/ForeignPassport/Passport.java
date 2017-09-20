@@ -13,7 +13,8 @@ public class Passport {
     private String passportNumber;
 
 
-    Passport() {
+    Passport()
+    {
         this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME);
     }
 
@@ -29,23 +30,28 @@ public class Passport {
     }
 
 
-    public String getFirstName() {
+    public String getFirstName()
+    {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName)
+    {
         this.firstName = firstName == null ? DEFAULT_FIRST_NAME : firstName;
     }
 
-    public String getLastName() {
+    public String getLastName()
+    {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName)
+    {
         this.lastName = lastName == null ? DEFAULT_LAST_NAME : lastName;
     }
 
-    public String getPassportSerial() {
+    public String getPassportSerial()
+    {
         return passportSerial;
     }
 
@@ -53,7 +59,8 @@ public class Passport {
         this.passportSerial = passportSerial == null ? DEFAULT_PASSPORT_SERIAL : passportSerial;
     }
 
-    public String getPassportNumber() {
+    public String getPassportNumber()
+    {
         return passportNumber;
     }
 
