@@ -1,35 +1,28 @@
 package javasummer2017.ForeignPassport;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class Visas {
     private static final String DEFAULT_LAND = "Unknown";
     private static final String DEFAULT_TYPE_OF_VISA = "Unknown";
-    private static final String DEFAULT_OPENING_DATE = "Waiting for the date";
-    private static final String DEFAULT_CLOSING_DATE = DEFAULT_OPENING_DATE;
 
     private String land;
     private String type;
-    private String openingDate;
-    private String closingDate;
+    private LocalDate openingDate;
+    private LocalDate closingDate;
 
-    Visas() {                       //добавить дефолтные поля открытия/закрытия
+    Visas() {
+        this.land = DEFAULT_LAND;
         this.type = DEFAULT_TYPE_OF_VISA;
     }
 
-    Visas(String land) {
-        this(land, DEFAULT_TYPE_OF_VISA);
-    }
-
-    Visas(String land, String type) {
-        this(land, type, DEFAULT_OPENING_DATE, DEFAULT_CLOSING_DATE);
-    }
-
-    public Visas(String land, String type, String openingDate, String closingDate) {
+    public Visas(String land, String type,
+                 int yearOpeningDate, int monthOpeningDate, int dayOpeningDay,
+                 int yearClosingDate, int monthClosingDate, int dayClosingDate) {
         setLand(land);
         setType(type);
-        setOpeningDate(openingDate);
-        setClosingDate(closingDate);
+        openingDate = LocalDate.of(yearOpeningDate, monthOpeningDate, dayOpeningDay);
+        closingDate = LocalDate.of(yearClosingDate, monthClosingDate, dayClosingDate);
     }
 
     public String getLand() {
@@ -48,19 +41,17 @@ public class Visas {
         this.type = type == null ? DEFAULT_TYPE_OF_VISA : type;
     }
 
-    public String getOpeningDate() {
+    public LocalDate getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(String openingDate) {
-        this.openingDate = openingDate == null ? DEFAULT_OPENING_DATE : openingDate;
-    }
-
-    public String getClosingDate() {
+    public LocalDate getClosingDate() {
         return closingDate;
     }
 
-    public void setClosingDate(String closingDate) {
-        this.closingDate = closingDate == null ? DEFAULT_CLOSING_DATE : closingDate;
+    void printVisa(){
+        System.out.printf("Land: %s   Type of visa: %s   Validity period: %s - %s%n",
+                getLand(), getType(),
+                openingDate.toString(), closingDate.toString());
     }
 }

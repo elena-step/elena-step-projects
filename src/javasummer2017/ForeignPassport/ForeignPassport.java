@@ -51,9 +51,8 @@ public class ForeignPassport extends Passport {
 
         for (int i = 0; i < visas.length; i++) {
             if (visas[i] != null) {
-                System.out.printf("%d. Land: %s   Type of visa: %s   Validity period: %s - %s%n",
-                        i + 1, visas[i].getLand(), visas[i].getType(),
-                        visas[i].getOpeningDate(), visas[i].getClosingDate());
+                System.out.print(i + 1 + ". ");
+                visas[i].printVisa();
             }
         }
     }
