@@ -4,7 +4,7 @@ public class ForeignPassport extends Passport {
 
     private static final String DEFAULT_FOREIGN_PASSPORT_SERIAL = "Unknown";
     private static final String DEFAULT_FOREIGN_PASSPORT_NUMBER = DEFAULT_FOREIGN_PASSPORT_SERIAL;
-
+    private static final int NUMBER_OF_VISAS = 100;
 
     private String foreignPassportSerial;
     private String foreignPassportNumber;
@@ -23,7 +23,7 @@ public class ForeignPassport extends Passport {
         super(firstName, lastName);
         setForeignPassportSerial(foreignPassportSerial);
         setForeignPassportNumber(foreignPassportNumber);
-        this.visas = new Visas[10];
+        this.visas = new Visas[NUMBER_OF_VISAS];
     }
 
     public String getForeignPassportSerial() {
@@ -34,8 +34,7 @@ public class ForeignPassport extends Passport {
         this.foreignPassportSerial = foreignPassportSerial == null ? DEFAULT_FOREIGN_PASSPORT_SERIAL : foreignPassportSerial;
     }
 
-    public String getForeignPassportNumber()
-    {
+    public String getForeignPassportNumber() {
         return foreignPassportNumber;
     }
 
@@ -43,4 +42,19 @@ public class ForeignPassport extends Passport {
         this.foreignPassportNumber = foreignPassportNumber == null ? DEFAULT_FOREIGN_PASSPORT_NUMBER : foreignPassportNumber;
     }
 
+    void printForeignPassport() {
+        System.out.printf("Person's name: %s %s%n" +
+                        "Foreign passport Series: %s   Foreign passport Number: %s%n" +
+                        "Visas: %n",
+                getFirstName(), getLastName(),
+                getForeignPassportSerial(), getForeignPassportNumber());
+
+        for (int i = 0; i < visas.length; i++) {
+            if (visas[i] != null) {
+                System.out.printf("%d. Land: %s   Type of visa: %s   Validity period: %s - %s%n",
+                        i + 1, visas[i].getLand(), visas[i].getType(),
+                        visas[i].getOpeningDate(), visas[i].getClosingDate());
+            }
+        }
+    }
 }

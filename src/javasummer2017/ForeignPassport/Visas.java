@@ -1,5 +1,7 @@
 package javasummer2017.ForeignPassport;
 
+import java.util.GregorianCalendar;
+
 public class Visas {
     private static final String DEFAULT_LAND = "Unknown";
     private static final String DEFAULT_TYPE_OF_VISA = "Unknown";
@@ -19,7 +21,7 @@ public class Visas {
         this(land, DEFAULT_TYPE_OF_VISA);
     }
 
-    Visas(String land, String type){
+    Visas(String land, String type) {
         this(land, type, DEFAULT_OPENING_DATE, DEFAULT_CLOSING_DATE);
     }
 
