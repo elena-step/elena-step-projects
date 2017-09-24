@@ -4,33 +4,36 @@ import java.util.Arrays;
 
 public class StudExam {
 
-    private static final String DEFOULT_FAMILY_NAME = "Unknown";
-    private static final String DEFOULT_NAME = DEFOULT_FAMILY_NAME;
-    private static final String DEFOULT_PATRONYMIC = DEFOULT_FAMILY_NAME;
-    private static final String DEFOULT_GROUP = "Unknown group";
-    private static final int[] DEFOULT_MARKS = {0};
+    private static final String DEFAULT_FAMILY_NAME = "Unknown";
+    private static final String DEFAULT_NAME = DEFAULT_FAMILY_NAME;
+    private static final String DEFAULT_PATRONYMIC = DEFAULT_FAMILY_NAME;
+    private static final String DEFAULT_GROUP = "Unknown group";
+    private static final String DEFAULT_GROUP_FOR_STIPEND = "Unknown group";
+    private static final int[] DEFAULT_MARKS = {0};
 
     private String familyName;
     private String name;
     private String patronymic;
     private String group;
+    private String groupForStipend;
+
     private int[] marks;
 
 
     StudExam() {
-        this(DEFOULT_FAMILY_NAME, DEFOULT_NAME, DEFOULT_PATRONYMIC, DEFOULT_GROUP);
+        this(DEFAULT_FAMILY_NAME, DEFAULT_NAME, DEFAULT_PATRONYMIC, DEFAULT_GROUP);
     }
 
     StudExam(String familyName) {
-        this(familyName, DEFOULT_NAME, DEFOULT_PATRONYMIC, DEFOULT_GROUP);
+        this(familyName, DEFAULT_NAME, DEFAULT_PATRONYMIC, DEFAULT_GROUP);
     }
 
     StudExam(String familyName, String name) {
-        this(familyName, name, DEFOULT_PATRONYMIC, DEFOULT_GROUP);
+        this(familyName, name, DEFAULT_PATRONYMIC, DEFAULT_GROUP);
     }
 
-    public StudExam(String familyName, String name, String patronymic) {
-        this(familyName, name, patronymic, DEFOULT_GROUP);
+    StudExam(String familyName, String name, String patronymic) {
+        this(familyName, name, patronymic, DEFAULT_GROUP);
     }
 
     StudExam(String familyName, String name, String patronymic, String group) {
@@ -38,23 +41,16 @@ public class StudExam {
         setName(name);
         setPatronymic(patronymic);
         setGroup(group);
-        this.marks = DEFOULT_MARKS;
+        this.marks = DEFAULT_MARKS;
     }
 
-    StudExam(String familyName, String name, String patronymic, String group, int[] marks) {
-        setFamilyName(familyName);
-        setName(name);
-        setPatronymic(patronymic);
-        setGroup(group);
-        setMarks(marks);
-    }
 
     public String getFamilyName() {
         return familyName;
     }
 
     public void setFamilyName(String familyName) {
-        this.familyName = familyName == null ? DEFOULT_FAMILY_NAME : familyName;
+        this.familyName = familyName == null ? DEFAULT_FAMILY_NAME : familyName;
     }
 
     public String getName() {
@@ -62,7 +58,7 @@ public class StudExam {
     }
 
     public void setName(String name) {
-        this.name = name == null ? DEFOULT_NAME : name;
+        this.name = name == null ? DEFAULT_NAME : name;
     }
 
     public String getPatronymic() {
@@ -70,7 +66,7 @@ public class StudExam {
     }
 
     public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic == null ? DEFOULT_PATRONYMIC : patronymic;
+        this.patronymic = patronymic == null ? DEFAULT_PATRONYMIC : patronymic;
     }
 
     public String getGroup() {
@@ -78,7 +74,15 @@ public class StudExam {
     }
 
     public void setGroup(String group) {
-        this.group = group == null ? DEFOULT_GROUP : group;
+        this.group = group == null ? DEFAULT_GROUP : group;
+    }
+
+    public String getGroupForStipend() {
+        return groupForStipend;
+    }
+
+    public void setGroupForStipend(String groupForStipend) {
+        this.groupForStipend = groupForStipend == null ? DEFAULT_GROUP_FOR_STIPEND : groupForStipend;
     }
 
     public int[] getMarks() {
@@ -91,15 +95,13 @@ public class StudExam {
         while (true) {
             if (temp.length == 1) {
                 System.out.println("Marks inputed not correctly.");
-                this.marks = DEFOULT_MARKS;
+                this.marks = DEFAULT_MARKS;
                 break;
             } else {
-                this.marks = temp;   //клонирование произведено в методе marksAfterCheck
+                this.marks = temp.clone();
                 break;
             }
-
         }
-
     }
 
 
@@ -112,15 +114,15 @@ public class StudExam {
             for (int i = 0; i < marks.length; i++) {
                 if (marks[i] <= 0 || marks[i] > 5) {
                     System.out.println("The marks must be from 1 to 5.");
-                    result = DEFOULT_MARKS;
+                    result = DEFAULT_MARKS;
                     break;
                 } else {
-                    result = marks.clone();
+                    result = marks;
                 }
             }
         } else {
             System.out.println("Quantity of marks can be from 3 to 5.");
-            result = DEFOULT_MARKS;
+            result = DEFAULT_MARKS;
         }
 
         return result;
