@@ -137,7 +137,7 @@ public class StudExam {
         System.out.print(familyName + " " + name + " " + patronymic + "\t" + group + "\t");
         System.out.println(Arrays.toString(marks));
     }
-
+//обновленная версия
 }
 
 
