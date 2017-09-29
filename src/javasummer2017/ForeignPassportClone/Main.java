@@ -16,7 +16,7 @@ public class Main {
                 2018, 11, 19);
         fp1.printForeignPassport();
 
-        ForeignPassport fpClone = (ForeignPassport) fp1.clone();
+        ForeignPassport fpClone = fp1.clone();
 
     }
 }

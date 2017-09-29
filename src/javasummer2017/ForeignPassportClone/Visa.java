@@ -53,8 +53,6 @@ public class Visa implements Cloneable {
     @Override
     public Visa clone() throws CloneNotSupportedException {
         Visa visaClone = (Visa) super.clone();
-        //visaClone.openingDate = (LocalDate)openingDate.clone();
-        //visaClone.closingDate=(LocalDate)closingDate.clone();
         return visaClone;
     }
 
