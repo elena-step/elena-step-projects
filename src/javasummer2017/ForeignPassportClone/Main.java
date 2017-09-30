@@ -1,7 +1,7 @@
 package javasummer2017.ForeignPassportClone;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         ForeignPassport fp1 = new ForeignPassport("Ivanov", "Ivan",
                 "AA", "123456");
@@ -16,7 +16,7 @@ public class Main {
                 2018, 11, 19);
         fp1.printForeignPassport();
 
-        ForeignPassport fpClone = fp1.clone();
+        ForeignPassport fpClone = fp1.clone() ;
 
     }
 }
