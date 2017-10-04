@@ -50,16 +50,16 @@ public class MyLinkedList {
 
     public void add(int data, long index) {
         Element newElement = new Element(data);
-        if (index < 0 || index > _size) {
-            System.err.println("Выход за границы списка.");
+        if (index == _size) {
+            addToTail(data);
+            return;
+        }
+        if (isIndexInvalid(index)) {
+            printIndexOutOfBounds();
             return;
         }
         if (index == 0) {
             addToHead(data);
-            return;
-        }
-        if (index == _size) {
-            addToTail(data);
             return;
         }
 
@@ -73,37 +73,9 @@ public class MyLinkedList {
     }
 
 
-    public void replace(int newData, long index) {
-        if (index < 0 || index > _size) {
-            System.err.println("Выход за границы списка.");
-            return;
-        }
-        if (index == 0) {
-            deleteFromHead();
-            addToHead(newData);
-            return;
-        }
-        if (index == _size - 1) {
-            deleteFromTail();
-            addToTail(newData);
-            return;
-        }
-        Element newElement = new Element(newData);
-        Element element = getElement(index);
-        Element prevElement = element.prev;
-        Element nextElement = element.next;
-        newElement.prev = prevElement;
-        prevElement.next = newElement;
-        element.prev = null;
-        newElement.next = nextElement;
-        nextElement.prev = newElement;
-        element.next = null;
-    }
-
-
     public void deleteFromTail() {
         if (_size == 0) {
-            System.err.println("Linked list is empty.");
+            printListIsEmpty();
             return;
         }
         if (_size == 1) {
@@ -121,7 +93,7 @@ public class MyLinkedList {
 
     public void deleteFromHead() {
         if (_size == 0) {
-            System.err.println("Linked list is empty.");
+            printListIsEmpty();
             return;
         }
         if (_size == 1) {
@@ -138,8 +110,8 @@ public class MyLinkedList {
     }
 
     public void delete(long index) {
-        if (index < 0 || index > _size) {
-            System.err.println("Выход за границы списка.");
+        if (isIndexInvalid(index)) {
+            printIndexOutOfBounds();
             return;
         }
         if (index == 0) {
@@ -163,6 +135,24 @@ public class MyLinkedList {
 
     public long size() {                    //написать метод
         return _size;
+    }
+
+
+    public void replace(int newData, long index) {
+        if (isIndexInvalid(index)) {
+            printIndexOutOfBounds();
+            return;
+        }
+        getElement(index).content = newData;
+    }
+
+
+    public int get(long index) {
+        if (isIndexInvalid(index)) {
+            printIndexOutOfBounds();
+            return Integer.MIN_VALUE;
+        }
+        return getElement(index).content;
     }
 
     private Element getElement(long index) {
@@ -191,6 +181,18 @@ public class MyLinkedList {
         }
 
         return result;
+    }
+
+    private boolean isIndexInvalid(long index) {
+        return index < 0 || index >= size();
+    }
+
+    private void printIndexOutOfBounds() {
+        System.err.println("Error: index out of bound.");
+    }
+
+    private void printListIsEmpty() {
+        System.err.println("Error: linked list is empty.");
     }
 
     @Override
