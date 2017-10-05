@@ -1,6 +1,6 @@
 package javasummer2017.Workers;
 
-public abstract class Worker {
+public abstract class Worker implements Comparable<Worker> {
     private static int counter = 0;
     private static final String DEFAULT_FIRST_NAME = "Unknown";
     private static final String DEFAULT_LAST_NAME = DEFAULT_FIRST_NAME;
@@ -39,7 +39,7 @@ public abstract class Worker {
         this.lastName = lastName == null ? DEFAULT_LAST_NAME : lastName;
     }
 
-    public String getName(){
+    public String getName() {
         return lastName + " " + firstName;
     }
 
@@ -61,6 +61,14 @@ public abstract class Worker {
     }
 
     protected abstract double countMonthlySalary();
+
+    @Override
+    public int compareTo(Worker o) {
+        if (this.countMonthlySalary() == o.countMonthlySalary()) {
+            return this.lastName.compareTo(o.lastName);
+        }
+        return -Double.compare(this.countMonthlySalary(), o.countMonthlySalary());
+    }
 
     @Override
     public String toString() {
