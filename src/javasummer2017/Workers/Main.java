@@ -59,6 +59,7 @@ public class Main {
         for (int i = n - 3 < 0 ? 0 : n - 3; i < n; i++) {
             System.out.println(workers[i].getId());
         }
+
     }
 
    /* private static void sortSalaryOfWorkers(Worker[] workers) {  //выполнено до изучения Comparable
