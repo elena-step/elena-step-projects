@@ -11,24 +11,15 @@ public class FractionC {
     private int counterOfZero;
 
     FractionC() {
-        this.negativeNumber = DEFAULT_NEGATIVE_NUMBER;
-        this.whole = 0;
-        this.part = DEFAULT_PART;
-        this.counterOfZero = 0;
+        this(DEFAULT_NEGATIVE_NUMBER, 0, 0, 0);
     }
 
     FractionC(long whole, int part) {
-        this.negativeNumber = DEFAULT_NEGATIVE_NUMBER;
-        setWhole(whole);
-        setPart(part);
-        this.counterOfZero = 0;
+        this(DEFAULT_NEGATIVE_NUMBER, whole, part, 0);
     }
 
     FractionC(long whole, int part, int counter) {
-        this.negativeNumber = DEFAULT_NEGATIVE_NUMBER;
-        setWhole(whole);
-        setPart(part);
-        setCounterOfZero(counter);
+        this(DEFAULT_NEGATIVE_NUMBER, whole, part, counter);
     }
 
     FractionC(boolean negativeNumber, long whole, int part, int counter) {
@@ -64,7 +55,7 @@ public class FractionC {
             int temp = part;
             do {
                 temp /= 10;
-            } while (temp >=10000);
+            } while (temp >= 10000);
             this.part = (short) temp;
         } else if (part == 0) {
             this.part = DEFAULT_PART;
@@ -92,7 +83,29 @@ public class FractionC {
         this.negativeNumber = negativeNumber;
     }
 
+    String prefix = isNegativeNumber() ? "-" : " ";
+
     void printFraction() {
+        switch (counterOfZero) {
+            case 0:
+                System.out.print(prefix + whole + "." + part);
+                break;
+            case 1:
+                System.out.print(prefix + whole + ".0" + part);
+                break;
+            case 2:
+                System.out.print(prefix + whole + ".00" + part);
+                break;
+            case 3:
+                System.out.print(prefix + whole + ".000" + part);
+                break;
+            case 4:
+                System.out.print(prefix + whole + ".0000" + part);
+                break;
+        }
+    }
+
+   /* void printFraction() {
         if (isNegativeNumber()) {
             switch (counterOfZero) {
                 case 0:
@@ -131,6 +144,6 @@ public class FractionC {
                     break;
             }
         }
-    }
+    }*/
 }
 
