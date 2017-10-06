@@ -83,24 +83,28 @@ public class FractionC {
         this.negativeNumber = negativeNumber;
     }
 
-    String prefix = isNegativeNumber() ? "-" : " ";
+    String prefix(){
+        String result = isNegativeNumber() ? "-" : " ";
+        return result;
+    }
+
 
     void printFraction() {
         switch (counterOfZero) {
             case 0:
-                System.out.print(prefix + whole + "." + part);
+                System.out.print(prefix() + whole + "." + part);
                 break;
             case 1:
-                System.out.print(prefix + whole + ".0" + part);
+                System.out.print(prefix() + whole + ".0" + part);
                 break;
             case 2:
-                System.out.print(prefix + whole + ".00" + part);
+                System.out.print(prefix() + whole + ".00" + part);
                 break;
             case 3:
-                System.out.print(prefix + whole + ".000" + part);
+                System.out.print(prefix() + whole + ".000" + part);
                 break;
             case 4:
-                System.out.print(prefix + whole + ".0000" + part);
+                System.out.print(prefix() + whole + ".0000" + part);
                 break;
         }
     }
