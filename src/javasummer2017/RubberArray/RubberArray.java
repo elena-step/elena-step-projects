@@ -184,9 +184,6 @@ public class RubberArray {
         System.err.println("Error: index out of bound.");
     }
 
-    /*private void printErrorLength() {
-        System.out.println("Length of array is not correct.");
-    }*/
 
     @Override
     public String toString() {
