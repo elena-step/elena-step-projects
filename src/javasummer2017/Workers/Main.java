@@ -1,5 +1,7 @@
 package javasummer2017.Workers;
 
+import java.util.Arrays;
+
 /**
  * Построить три класса (базовый и 2 потомка), описывающих
  * некоторых работников с почасовой оплатой (один из потомков) и
@@ -38,7 +40,9 @@ public class Main {
 
         Worker[] workers = {hw1, hw2, hw3, hw4, hw5, mw1, mw2, mw3, mw4, mw5};
 
-        sortSalaryOfWorkers(workers);
+        //sortSalaryOfWorkers(workers);  //выполнено до изучения Comparable
+
+        Arrays.sort(workers);
 
         int n = workers.length;
 
@@ -55,9 +59,10 @@ public class Main {
         for (int i = n - 3 < 0 ? 0 : n - 3; i < n; i++) {
             System.out.println(workers[i].getId());
         }
+
     }
 
-    private static void sortSalaryOfWorkers(Worker[] workers) {
+   /* private static void sortSalaryOfWorkers(Worker[] workers) {  //выполнено до изучения Comparable
         int n = workers.length;
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < n - i; j++) {
@@ -66,10 +71,17 @@ public class Main {
                     workers[j - 1] = workers[j];
                     workers[j] = temp;
                 }
+                if (workers[j - 1].countMonthlySalary() == (workers[j].countMonthlySalary())) {
+                    if (workers[j - 1].getLastName().compareTo(workers[j].getLastName()) > 0) {
+                        Worker temp = workers[j - 1];
+                        workers[j - 1] = workers[j];
+                        workers[j] = temp;
+                    }
+                }
             }
         }
-    }
-//добавить округление и сортировку по имени
+    }*/
+
 
 }
 
