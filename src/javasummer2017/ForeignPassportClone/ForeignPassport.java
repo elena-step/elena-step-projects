@@ -46,8 +46,12 @@ public class ForeignPassport extends Passport implements Cloneable {
     @Override
     public ForeignPassport clone() throws CloneNotSupportedException {
         ForeignPassport fpClone = (ForeignPassport) super.clone();
-        //fpClone.visas = this.visas.clone();
-        fpClone.visas = (Visa[]) visas.clone();
+        fpClone.visas = new Visa[visas.length];
+        for (int i = 0; i < visas.length; i++) {
+            if (this.visas[i] != null) {
+                fpClone.visas[i] = this.visas[i].clone();
+            }
+        }
         return fpClone;
     }
 
@@ -64,6 +68,7 @@ public class ForeignPassport extends Passport implements Cloneable {
                 visas[i].printVisa();
             }
         }
+        System.out.println();
     }
 }
 
