@@ -12,10 +12,6 @@ public class Visa implements Cloneable {
     private LocalDate openingDate;
     private LocalDate closingDate;
 
-   /* Visa() {
-        this.land = DEFAULT_LAND;
-        this.type = DEFAULT_TYPE_OF_VISA;
-    }*/
 
     public Visa(String land, String type,
                 int yearOpeningDate, int monthOpeningDate, int dayOpeningDay,
