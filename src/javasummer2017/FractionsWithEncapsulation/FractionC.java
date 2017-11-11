@@ -83,71 +83,23 @@ public class FractionC {
         this.negativeNumber = negativeNumber;
     }
 
-    String prefix(){
-        String result = isNegativeNumber() ? "-" : " ";
-        return result;
-    }
-
 
     void printFraction() {
-        switch (counterOfZero) {
-            case 0:
-                System.out.print(prefix() + whole + "." + part);
-                break;
-            case 1:
-                System.out.print(prefix() + whole + ".0" + part);
-                break;
-            case 2:
-                System.out.print(prefix() + whole + ".00" + part);
-                break;
-            case 3:
-                System.out.print(prefix() + whole + ".000" + part);
-                break;
-            case 4:
-                System.out.print(prefix() + whole + ".0000" + part);
-                break;
+        StringBuilder sb = new StringBuilder();
+        if (isNegativeNumber()) {
+            sb.append("-");
         }
+        sb.append(whole);
+        sb.append(".");
+        if (counterOfZero > 0 && part != 0) {
+            for (int i = 0; i < counterOfZero; i++) {
+                sb.append("0");
+            }
+        }
+        sb.append(part);
+        System.out.print(sb.toString());
+
     }
 
-   /* void printFraction() {
-        if (isNegativeNumber()) {
-            switch (counterOfZero) {
-                case 0:
-                    System.out.print("-" + whole + "." + part);
-                    break;
-                case 1:
-                    System.out.print("-" + whole + ".0" + part);
-                    break;
-                case 2:
-                    System.out.print("-" + whole + ".00" + part);
-                    break;
-                case 3:
-                    System.out.print("-" + whole + ".000" + part);
-                    break;
-                case 4:
-                    System.out.print("-" + whole + ".0000" + part);
-                    break;
-            }
-
-        } else {
-            switch (counterOfZero) {
-                case 0:
-                    System.out.print(whole + "." + part);
-                    break;
-                case 1:
-                    System.out.print(whole + ".0" + part);
-                    break;
-                case 2:
-                    System.out.print(whole + ".00" + part);
-                    break;
-                case 3:
-                    System.out.print(whole + ".000" + part);
-                    break;
-                case 4:
-                    System.out.print(whole + ".0000" + part);
-                    break;
-            }
-        }
-    }*/
 }
 
