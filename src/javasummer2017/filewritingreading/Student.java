@@ -5,10 +5,15 @@ import java.util.Arrays;
 public class Student {
     private static final String DEFAULT_FIRST_NAME = "Unknown";
     private static final String DEFAULT_LAST_NAME = "Unknown";
+    private static final int[] DEFAULT_MARKS = {0};
 
     private String _firstName;
     private String _lastName;
     private int[] _marks;
+
+    public Student() {
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME);
+    }
 
     public Student(String firstName, String lastName) {
         _firstName = firstName;
@@ -38,6 +43,7 @@ public class Student {
 
     public void setMarks(int[] marks) {
         if (!checkMarks(marks)) {
+            _marks = DEFAULT_MARKS;
             return;
         } else {
             _marks = marks.clone();
@@ -78,10 +84,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student "
-                + getFirstName() + " "
-                + getLastName()
-                + "   marks: "
-                + Arrays.toString(_marks);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getFirstName() + " ");
+        sb.append(getLastName() + " ");
+        for (int mark : getMarks()) {
+            sb.append(mark + " ");
+        }
+
+        return sb.toString();
     }
 }
