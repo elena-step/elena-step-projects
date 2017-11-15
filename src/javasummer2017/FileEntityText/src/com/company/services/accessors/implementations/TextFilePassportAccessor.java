@@ -13,11 +13,9 @@ public class TextFilePassportAccessor
         extends AbstractTextFileAccessor<Passport>
         implements PassportAccessor {
 
-    private String _fileName;
 
     public TextFilePassportAccessor(String fileName) {
         super(fileName);
-       // _fileName = fileName;
     }
 
     protected void saveEntity(PrintStream writer, Passport passport) {
@@ -29,7 +27,7 @@ public class TextFilePassportAccessor
     @Override
     public Collection<Passport> readAll() {
         Collection<Passport> result = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File(_fileName))) {
+        try (Scanner scanner = new Scanner(new File(getFileName()))) {
             while (scanner.hasNextLine()) {
                 String number = scanner.nextLine();
                 String firstName = scanner.nextLine();

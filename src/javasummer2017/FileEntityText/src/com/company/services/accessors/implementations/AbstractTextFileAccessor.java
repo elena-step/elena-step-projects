@@ -34,5 +34,9 @@ public abstract class AbstractTextFileAccessor<T> {
 
     protected abstract void saveEntity(PrintStream writer, T entity);
 
+    protected String getFileName(){
+        return _fileName;
+    }
+
 
 }
