@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Thread bT1 = new Thread(new Runnable() {
+        /*Thread bT1 = new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("Thread " + Thread.currentThread().getName() + " started.");
@@ -90,7 +90,13 @@ public class Main {
                 }
                 System.out.println("Thread " + Thread.currentThread().getName() + " finished.");
             }
-        }, "T5");
+        }, "T5");*/
+
+        MyThread bT1 = new MyThread("T1");
+        MyThread bT2 = new MyThread("T2");
+        MyThread bT3 = new MyThread("T3");
+        MyThread bT4 = new MyThread("T4");
+        MyThread bT5 = new MyThread("T5");
 
         bT1.start();
         bT2.start();
@@ -103,7 +109,7 @@ public class Main {
         int counter = 0;
 
         while (counter < 5) {
-            Thread.currentThread().sleep(2000);
+            Thread.currentThread().sleep(1000);
             System.out.println("Please, input Thread's name for stop it.");
             choice = scan.nextLine();
 
