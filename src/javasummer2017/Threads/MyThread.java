@@ -1,11 +1,9 @@
 package javasummer2017.Threads;
 
 public class MyThread extends Thread implements Runnable {
-    private Thread _thread;
     private String _name;
 
     MyThread(String name) {
-        _thread = new Thread();
         _name = name;
     }
 
