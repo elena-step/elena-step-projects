@@ -11,51 +11,58 @@
         ul {
             list-style-type: disc;
         }
+        .orderedElements::first-letter{
+            font-weight: bold;
+        }
+        .unorderedElements::first-line{
+            color: blue;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 <ol>
-    <li>
+    <li class="orderedElements">
         A
         <ul>
-            <li>
-                abstract
+            <li class="unorderedElements">
+               abstract
             </li>
         </ul>
     </li>
-    <li>
+    <li class="orderedElements">
         B
         <ul>
-            <li>
+            <li class="unorderedElements">
                 boolean
             </li>
-            <li>
+            <li class="unorderedElements">
                 break
             </li>
-            <li>
+            <li class="unorderedElements">
                 byte
             </li>
         </ul>
     </li>
-    <li>
+    <li class="orderedElements">
         C
         <ul>
-            <li>
+            <li class="unorderedElements">
                 case
             </li>
-            <li>
+            <li class="unorderedElements">
                 catch
             </li>
-            <li>
+            <li class="unorderedElements">
                 char
             </li>
-            <li>
+            <li class="unorderedElements">
                 class
             </li>
-            <li>
+            <li class="unorderedElements">
                 const
             </li>
-            <li>
+            <li class="unorderedElements">
                 continue
             </li>
         </ul>
