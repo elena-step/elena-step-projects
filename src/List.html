@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <style>
+        ol {
+            list-style-type: upper-roman;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+        .orderedElements::first-letter{
+            font-weight: bold;
+        }
+        .unorderedElements::first-line{
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<ol>
+    <li class="orderedElements">
+        A
+        <ul>
+            <li class="unorderedElements">
+               abstract
+            </li>
+        </ul>
+    </li>
+    <li class="orderedElements">
+        B
+        <ul>
+            <li class="unorderedElements">
+                boolean
+            </li>
+            <li class="unorderedElements">
+                break
+            </li>
+            <li class="unorderedElements">
+                byte
+            </li>
+        </ul>
+    </li>
+    <li class="orderedElements">
+        C
+        <ul>
+            <li class="unorderedElements">
+                case
+            </li>
+            <li class="unorderedElements">
+                catch
+            </li>
+            <li class="unorderedElements">
+                char
+            </li>
+            <li class="unorderedElements">
+                class
+            </li>
+            <li class="unorderedElements">
+                const
+            </li>
+            <li class="unorderedElements">
+                continue
+            </li>
+        </ul>
+    </li>
+</ol>
+</body>
+</html>
