@@ -1,0 +1,49 @@
+#menu {
+    height: 1.2cm;
+}
+
+#menu > a {
+    display: block;
+    width: 100px;
+    height: 23px;
+    padding: 10px;
+    text-decoration: none;
+    float: left;
+    background-color: rgb(255, 222, 35);
+    color: black;
+    text-align: center;
+}
+
+#menu > a:hover {
+    background-color: rgb(160, 161, 186);
+    color: white;
+}
+
+h2 {
+    margin: 1.5cm 10% 1cm 15%;
+    width: 70%;
+    text-align: center;
+}
+
+.gallery {
+    margin: 1cm 10% 2cm 15%;
+    width: 70%;
+}
+
+body {
+    background-color: rgb(237, 242, 247);
+}
+
+figure {
+    float: left;
+}
+
+figcaption {
+    color: black;
+}
+
+p img {
+    height: 100px;
+    padding: 10px 10px 10px 0px;
+    float: left;
+}
