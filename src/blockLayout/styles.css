@@ -1,0 +1,296 @@
+.border {
+    border: 1px solid black;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 781px;
+    height: 100px;
+    float: right;
+}
+
+.content {
+    width: 741px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+    float: right;
+    font: 0.85em 'Arial', sans-serif;
+}
+
+.navbar {
+    width: 175px;
+    float: left;
+    background-color: #f4f6f7;
+
+}
+
+.footer {
+    width: 781px;
+    float: right;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 7px;
+    padding-bottom: 2px;
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-size: 230%;
+    font-weight: normal;
+    white-space: normal;
+    border-bottom: 1px groove;
+}
+
+h2 {
+    clear: both;
+    padding-top: 20px;
+    padding-bottom: 2px;
+    margin-bottom: 6px;
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-size: 170%;
+    font-weight: normal;
+    white-space: normal;
+    border-bottom: 1px groove;
+
+}
+
+.subtitle {
+    padding-top: 5px;
+}
+
+.correct {
+    display: inline-block;
+    margin-left: 8px;
+    font: 14px 'Arial', sans-serif;
+    color: #0645ad;
+}
+
+.correct a {
+    text-decoration: none;
+    color: #0645ad;
+}
+
+.correct a:hover {
+    text-decoration: underline;
+}
+
+.shift {
+    float: right;
+}
+
+p {
+    margin: 0.7em 0;
+    line-height: 24px;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+}
+
+p a {
+    text-decoration: none;
+    color: #0645ad;
+    }
+
+p a:hover {
+    text-decoration: underline;
+}
+
+p .bold {
+    font-weight: bold;
+}
+
+.specialLink a {
+    text-decoration: none;
+    color: #b22929;
+}
+
+.specialLink a:hover {
+    text-decoration: underline;
+}
+
+.italic {
+    font-style: italic;
+}
+.figure {
+    /* display: inline-block;*/
+    clear: right;
+    width: 272px;
+    height: 190px;
+    padding: 5px;
+    margin: 0.7em 0;
+    float: right;
+    background-color: #f4f6f7;
+    border: 1px groove;
+    /*   display: inline-block;
+       vertical-align: top;*/
+}
+
+.figure img {
+    display: block;
+    margin: 0 auto 6px;
+    border: 1px groove;
+}
+
+.figure a {
+    text-decoration: none;
+    color: #0645ad;
+}
+
+.figure a:hover {
+    text-decoration: underline;
+}
+
+figure. div {
+    padding: 5px;
+}
+
+.maintenance {
+    width: 306px;
+    height: 260px;
+    float: left;
+    border: 1px groove;
+    margin: 3px 0;
+    padding: 8px;
+    background-color: #f4f6f7;
+}
+
+.maintenance div {
+    text-align: center;
+    word-spacing: 4px;
+}
+
+.maintenance a {
+    text-decoration: none;
+    color: #0645ad;
+    word-spacing: 1px;
+    letter-spacing: 0.7px;
+}
+
+.maintenance a:hover {
+    text-decoration: underline;
+}
+
+.number a {
+    display: inline-block;
+    padding-right: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.number a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: disc;
+    line-height: 1.5em;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+}
+
+.maintenance ul {
+    padding-left: 1px;
+    line-height: 170%;
+}
+
+.maintenance li {
+    list-style-type: none;
+}
+
+.headline {
+    font-weight: bold;
+}
+.apply {
+    font-size: 90%;
+    vertical-align: super;
+}
+
+.navbar a {
+    font: 0.75em 'Arial', sans-serif;
+    line-height: 1.8em;
+    text-decoration: none;
+    color: #0645ad;
+
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/*.navbar a:visited {
+    color: #0b0080;
+}*/
+
+.navbar ul {
+    margin: 4px 0px;
+    padding: 0px 16px 2px;
+    list-style-type: none;
+}
+
+.navbar h3 {
+    margin: 0px 10px 0px 16px;
+    padding: 9px 0px 6px;
+    color: #444444;
+    font-weight: normal;
+    font: 0.75em 'Arial', sans-serif;
+    border-bottom-width: 1px;
+    border-bottom-style: groove;
+
+}
+
+#cogwheel {
+    background-image: url("pics/cogwheel.JPG");
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+#languages {
+    margin: 0px 70px 0px 16px;
+    padding: 5px;
+    border: 1px groove;
+}
+
+#languages a:hover {
+    text-decoration: none;
+}
+
+#languages:hover {
+    background-color: white;
+}
+
+.first {
+    font: bolder 0.7em 'Arial', sans-serif;
+    color: #444444;
+}
+
+.second {
+    font: bold 1.2em 'Arial', sans-serif;
+    color: #444444;
+    vertical-align: sub;
+}
+
+.third {
+    font: 1.2em 'Arial', sans-serif;
+    color: black;
+}
+
+#correcting ul {
+    list-style-image: url('pics/pen.JPG');
+    list-style-position: inside;
+    float: right;
+}
+
+#correcting a {
+    color: #444444;
+    vertical-align: 1px;
+}
+
+#correcting a:hover {
+    color: #0645ad;
+    text-decoration: underline;
+    vertical-align: 1px;
+}
+
